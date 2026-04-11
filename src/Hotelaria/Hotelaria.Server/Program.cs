@@ -5,35 +5,34 @@ namespace Hotelaria.Server
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            _ = builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            _ = builder.Services.AddEndpointsApiExplorer();
+            _ = builder.Services.AddSwaggerGen();
 
-            var app = builder.Build();
+            WebApplication app = builder.Build();
 
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
+            _ = app.UseDefaultFiles();
+            _ = app.UseStaticFiles();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                _ = app.UseSwagger();
+                _ = app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            _ = app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            _ = app.UseAuthorization();
 
+            _ = app.MapControllers();
 
-            app.MapControllers();
-
-            app.MapFallbackToFile("/index.html");
+            _ = app.MapFallbackToFile("/index.html");
 
             app.Run();
         }
