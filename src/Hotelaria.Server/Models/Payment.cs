@@ -5,6 +5,6 @@ namespace Hotelaria.Server.Models
         public int Id { get; set; }
         public int FlowId { get; set; }
         public DateTime PaymentDate { get; set; }
-        public decimal TotalPrize { get; set; }
+        public decimal Price { get; set; }
     }
 }
