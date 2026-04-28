@@ -1,4 +1,4 @@
-namespace Hotelaria.Server
+namespace Hotelaria.Server.Models
 {
     public abstract class People
     {

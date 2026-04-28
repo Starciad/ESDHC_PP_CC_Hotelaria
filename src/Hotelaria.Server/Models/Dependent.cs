@@ -1,4 +1,4 @@
-namespace Hotelaria.Server
+namespace Hotelaria.Server.Models
 {
     public sealed class Dependent
     {
