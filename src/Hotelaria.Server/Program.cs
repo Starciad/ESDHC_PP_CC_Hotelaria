@@ -1,40 +1,19 @@
+var builder = WebApplication.CreateBuilder(args);
 
-namespace Hotelaria.Server
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+// ESSENCIAL
+builder.Services.AddControllers();
 
-            // Add services to the container.
+// opcional swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-            _ = builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            _ = builder.Services.AddEndpointsApiExplorer();
-            _ = builder.Services.AddSwaggerGen();
+var app = builder.Build();
 
-            WebApplication app = builder.Build();
+// swagger
+app.UseSwagger();
+app.UseSwaggerUI();
 
-            _ = app.UseDefaultFiles();
-            _ = app.UseStaticFiles();
+// ESSENCIAL
+app.MapControllers();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                _ = app.UseSwagger();
-                _ = app.UseSwaggerUI();
-            }
-
-            _ = app.UseHttpsRedirection();
-
-            _ = app.UseAuthorization();
-
-            _ = app.MapControllers();
-
-            _ = app.MapFallbackToFile("/index.html");
-
-            app.Run();
-        }
-    }
-}
+app.Run();
