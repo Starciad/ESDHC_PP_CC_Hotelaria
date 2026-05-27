@@ -1,10 +1,11 @@
 ﻿using Hotel.Web.Models;
 
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hotel.Web.Databases
 {
-    public sealed class AppDatabaseContext : DbContext
+    public sealed class AppDatabaseContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Dependent> Dependents { get; set; }
         public DbSet<Employee> Employees { get; set; }

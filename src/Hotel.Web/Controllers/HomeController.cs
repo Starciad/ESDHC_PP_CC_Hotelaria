@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace Hotel.Web.Controllers
 {
-    public class HomeController(ILogger<HomeController> logger) : Controller
+    public sealed class HomeController(ILogger<HomeController> logger) : Controller
     {
         private readonly ILogger<HomeController> _logger = logger;
 

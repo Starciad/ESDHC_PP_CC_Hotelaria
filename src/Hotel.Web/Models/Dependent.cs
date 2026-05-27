@@ -11,7 +11,7 @@ namespace Hotel.Web.Models
     {
         [Key]
         internal int Id { get; set; }
-        
+
         [ForeignKey("GuestId")]
         internal Guest Guest { get; set; }
 
