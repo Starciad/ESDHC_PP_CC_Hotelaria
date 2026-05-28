@@ -416,3 +416,8 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Others
+hotel.db
+hotel.db-shm
+hotel.db-wal
