@@ -39,6 +39,7 @@
 }
 
 .register-right {
+    position: relative;
     background: white;
     display: flex;
     justify-content: center;

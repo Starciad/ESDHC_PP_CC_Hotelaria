@@ -5,6 +5,7 @@
 }
 
 /* LEFT */
+
 .about-left {
     background-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80');
     background-size: cover;
@@ -40,6 +41,7 @@
 }
 
 /* RIGHT */
+
 .about-right {
     position: relative;
     background: white;
