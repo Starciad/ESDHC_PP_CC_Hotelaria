@@ -2,7 +2,89 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@section Styles {
+    <link rel="stylesheet" href="~/styles/pages/home.css" />
+}
+
+<main class="hero-container">
+    <section class="hero-content">
+        <span class="subtitle">Paradise View</span>
+        <h1>Hotel for every moment rich in emotion</h1>
+        <p>Every moment feels like the first time in paradise view</p>
+
+        <div class="hero-actions">
+            <button class="btn btn-primary">Book now</button>
+            <button class="btn-tour">
+                <span class="play-icon"><i class="fa-solid fa-play"></i></span>
+                Take a tour
+            </button>
+        </div>
+    </section>
+
+    <section class="hero-image">
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" alt="Paradise View Resort">
+    </section>
+
+    <form class="booking-bar" onsubmit="event.preventDefault(); alert('Reserva enviada!');">
+
+        <div class="booking-item">
+            <i class="fa-solid fa-location-dot icon"></i>
+            <div class="booking-details">
+                <label for="location">Location</label>
+                <select id="location" name="location" required>
+                    <option value="Seicheles">Seychelles</option>
+                    <option value="lagos">Zanzibar</option>
+                    <option value="london">Madagascar</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="booking-item">
+            <i class="fa-solid fa-hotel icon"></i>
+            <div class="booking-details">
+                <label for="room-type">Room type</label>
+                <select id="room-type" name="room-type">
+                    <option value="standard">Standard</option>
+                    <option value="deluxe">Deluxe Suite</option>
+                    <option value="penthouse">Penthouse</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="booking-item">
+            <i class="fa-solid fa-user icon"></i>
+            <div class="booking-details">
+                <label for="persons">Person</label>
+                <select id="persons" name="persons">
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04+</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="booking-item">
+            <i class="fa-solid fa-calendar-days icon"></i>
+            <div class="booking-details">
+                <label for="checkin">Check in</label>
+                <input type="date" id="checkin" name="checkin" value="2023-03-09" required>
+            </div>
+        </div>
+
+        <div class="booking-item">
+            <i class="fa-solid fa-calendar-days icon"></i>
+            <div class="booking-details">
+                <label for="checkout">Check out</label>
+                <input type="date" id="checkout" name="checkout" value="2023-03-13" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-booking-submit">Book Now</button>
+    </form>
+</main>
+
+<section class="facilities-section">
+    <h2>Our Facilities</h2>
+    <p>We offer modern (5 star) hotel facilities for your comfort.</p>
+</section>
