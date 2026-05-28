@@ -15,7 +15,7 @@ namespace Hotel.Web.Models
         [ForeignKey("GuestId")]
         internal Guest Guest { get; set; }
 
-        internal string Name { get; set; }
+        internal string Name { get; set; } = string.Empty;
         internal DateTime BirthdayDate { get; set; }
     }
 }
