@@ -22,15 +22,14 @@
     <!-- HAS HEADER? -->
     @if (ViewData["HasHeader"] != null && (bool)ViewData["HasHeader"] == true)
     {
-        <partial name="_Header" />
+        @await Html.PartialAsync("~/Views/Shared/_Header.cshtml");
     }
 
     <div>
         @RenderBody()
     </div>
 
-    <footer>
-    </footer>
+    @await Html.PartialAsync("~/Views/Shared/_Footer.cshtml");
 
     <!-- SCRIPTS -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

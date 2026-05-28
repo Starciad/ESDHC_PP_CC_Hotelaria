@@ -10,6 +10,7 @@
 }
 
 <main class="register-container">
+    <!-- LEFT -->
     <section class="register-left">
         <div class="register-text">
             <h1>Your Luxury Journey Starts Here</h1>
@@ -17,6 +18,7 @@
         </div>
     </section>
 
+    <!-- RIGHT -->
     <section class="register-right">
         <a asp-controller="Home" asp-action="Index" class="back-button">
             <i class="fa-solid fa-arrow-left"></i> Back
@@ -46,7 +48,7 @@
                         <input asp-for="FullName" placeholder="Digite seu nome" />
                     </div>
 
-                    <span asp-validation-for="FullName"class="text-danger"></span>
+                    <span asp-validation-for="FullName" class="text-danger"></span>
                 </div>
 
                 <div class="input-group">

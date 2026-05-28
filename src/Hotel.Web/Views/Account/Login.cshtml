@@ -10,7 +10,7 @@
 }
 
 <main class="login-container">
-
+    <!-- LEFT -->
     <section class="login-left">
         <div class="login-text">
             <h1>Luxury Stay Experience</h1>
@@ -18,6 +18,7 @@
         </div>
     </section>
 
+    <!-- RIGHT -->
     <section class="login-right">
         <a asp-controller="Home" asp-action="Index" class="back-button">
             <i class="fa-solid fa-arrow-left"></i> Back
@@ -49,7 +50,7 @@
                         <input asp-for="Email" placeholder="Digite seu e-mail" />
                     </div>
 
-                    <span asp-validation-for="Email"class="text-danger"></span>
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
                 <div class="input-group">
@@ -68,7 +69,7 @@
                     <a href="#">Esqueceu a senha?</a>
                 </div>
 
-                <button type="submit"class="btn-login">Login</button>
+                <button type="submit" class="btn-login">Login</button>
             </form>
 
             <div class="register-text">Não possui conta? <a asp-controller="Account" asp-action="Register">Criar conta</a></div>
