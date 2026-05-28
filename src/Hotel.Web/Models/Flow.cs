@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hotel.Web.Models
 {
-    [PrimaryKey("Id")]
+    [PrimaryKey(nameof(Id))]
     public sealed class Flow
     {
         [Key]

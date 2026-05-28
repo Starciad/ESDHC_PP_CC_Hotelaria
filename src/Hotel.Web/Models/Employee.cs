@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hotel.Web.Models
 {
-    [PrimaryKey("Id")]
+    [PrimaryKey(nameof(Id))]
     public sealed class Employee
     {
         [Key]
