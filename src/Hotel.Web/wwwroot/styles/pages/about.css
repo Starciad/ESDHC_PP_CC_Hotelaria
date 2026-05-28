@@ -12,12 +12,12 @@
     position: relative;
 }
 
-    .about-left::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.45);
-    }
+.about-left::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
 
 .about-overlay {
     position: absolute;
@@ -28,16 +28,16 @@
     max-width: 450px;
 }
 
-    .about-overlay h1 {
-        font-size: 56px;
-        line-height: 1.1;
-        margin-bottom: 18px;
-    }
+.about-overlay h1 {
+    font-size: 56px;
+    line-height: 1.1;
+    margin-bottom: 18px;
+}
 
-    .about-overlay p {
-        font-size: 16px;
-        line-height: 1.7;
-    }
+.about-overlay p {
+    font-size: 16px;
+    line-height: 1.7;
+}
 
 /* RIGHT */
 .about-right {
@@ -61,10 +61,10 @@
     margin-bottom: 35px;
 }
 
-    .logo span {
-        font-size: 22px;
-        font-weight: bold;
-    }
+.logo span {
+    font-size: 22px;
+    font-weight: bold;
+}
 
 .subtitle {
     color: var(--primary-color);
@@ -101,10 +101,10 @@
     transition: 0.3s;
 }
 
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
-    }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+}
 
 .card-icon {
     width: 55px;
@@ -162,10 +162,10 @@
     transition: 0.3s;
 }
 
-    .btn-about:hover {
-        opacity: 0.9;
-        transform: translateY(-2px);
-    }
+.btn-about:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
 
 /* BACK BUTTON */
 .back-button {
@@ -181,14 +181,14 @@
     transition: 0.3s;
 }
 
-    .back-button i {
-        color: var(--primary-color);
-    }
+.back-button i {
+    color: var(--primary-color);
+}
 
-    .back-button:hover {
-        color: var(--primary-color);
-        transform: translateX(-3px);
-    }
+.back-button:hover {
+    color: var(--primary-color);
+    transform: translateX(-3px);
+}
 
 /* RESPONSIVE */
 @media(max-width:950px) {
