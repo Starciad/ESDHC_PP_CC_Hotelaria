@@ -15,10 +15,6 @@
     <link rel="stylesheet" href="~/styles/palette.css" asp-append-version="true">
     <link rel="stylesheet" href="~/styles/components/header.css" asp-append-version="true">
     @await RenderSectionAsync("Styles", required: false)
-
-    <!-- SCRIPTS -->
-    <script src="~/lib/jquery/dist/jquery.min.js" defer></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </head>
 <body>
     <header class="navbar">
@@ -45,7 +41,10 @@
     </div>
 
     <footer>
-
     </footer>
+
+    <!-- SCRIPTS -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

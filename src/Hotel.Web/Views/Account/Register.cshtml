@@ -8,167 +8,100 @@
     <link rel="stylesheet" href="~/styles/pages/register.css" />
 }
 
-<!--
-<h2>Registro</h2>
-
-<form asp-action="Register" method="post">
-    <div>
-        <label asp-for="FullName"></label>
-        <input asp-for="FullName" />
-        <span asp-validation-for="FullName"></span>
-    </div>
-
-    <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-    </div>
-
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-
-    <div>
-        <label asp-for="ConfirmPassword"></label>
-        <input asp-for="ConfirmPassword" />
-        <span asp-validation-for="ConfirmPassword"></span>
-    </div>
-
-    <button type="submit">Registrar</button>
-</form>
-    -->
-
 <main class="register-container">
-
     <section class="register-left">
-
         <div class="register-text">
-
-            <h1>
-                Your Luxury Journey Starts Here
-            </h1>
-
-            <p>
-                Create your account and discover unforgettable experiences with Paradise View Hotel.
-            </p>
-
+            <h1>Your Luxury Journey Starts Here</h1>
+            <p>Create your account and discover unforgettable experiences with Paradise View Hotel.</p>
         </div>
-
     </section>
 
     <section class="register-right">
-
-
-        <a href="index.html" class="back-button">
-            <i class="fa-solid fa-arrow-left"></i>
-            Back
+        <a asp-controller="Home" asp-action="Index" class="back-button">
+            <i class="fa-solid fa-arrow-left"></i> Back
         </a>
 
         <div class="register-box">
-
             <div class="logo">
                 <span style="color:#84724E;">▲</span>
                 <span>PV</span>
             </div>
 
-            <span class="subtitle">
-                Paradise View
-            </span>
+            <span class="subtitle">Paradise View</span>
 
             <h2>Criar Conta</h2>
+            <p>Preencha os dados abaixo para começar.</p>
 
-            <p>
-                Preencha os dados abaixo para começar.
-            </p>
+            <form asp-controller="Account" asp-action="Register" method="post">
+                @Html.AntiForgeryToken()
 
-            <form onsubmit="event.preventDefault(); alert('Conta criada com sucesso!')">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="input-group">
-
-                    <label>Nome completo</label>
+                    <label asp-for="FullName"></label>
 
                     <div class="input-box">
                         <i class="fa-solid fa-user"></i>
-
-                        <input type="text"
-                               placeholder="Digite seu nome"
-                               required>
+                        <input asp-for="FullName" placeholder="Digite seu nome" />
                     </div>
 
+                    <span asp-validation-for="FullName"class="text-danger"></span>
                 </div>
 
                 <div class="input-group">
-
-                    <label>E-mail</label>
+                    <label asp-for="Email"></label>
 
                     <div class="input-box">
                         <i class="fa-solid fa-envelope"></i>
-
-                        <input type="email"
-                               placeholder="Digite seu e-mail"
-                               required>
+                        <input asp-for="Email" placeholder="Digite seu e-mail" />
                     </div>
 
+                    <span asp-validation-for="Email"
+                          class="text-danger">
+                    </span>
                 </div>
 
                 <div class="input-group">
-
-                    <label>Senha</label>
+                    <label asp-for="Password"></label>
 
                     <div class="input-box">
                         <i class="fa-solid fa-lock"></i>
-
-                        <input type="password"
-                               placeholder="Crie uma senha"
-                               required>
+                        <input asp-for="Password" placeholder="Crie uma senha" />
                     </div>
 
+                    <span asp-validation-for="Password"
+                          class="text-danger">
+                    </span>
                 </div>
 
                 <div class="input-group">
-
-                    <label>Confirmar senha</label>
+                    <label asp-for="ConfirmPassword"></label>
 
                     <div class="input-box">
                         <i class="fa-solid fa-lock"></i>
-
-                        <input type="password"
-                               placeholder="Confirme sua senha"
-                               required>
+                        <input asp-for="ConfirmPassword" placeholder="Confirme sua senha" />
                     </div>
 
+                    <span asp-validation-for="ConfirmPassword"
+                          class="text-danger">
+                    </span>
                 </div>
 
                 <div class="terms">
-
-                    <input type="checkbox" required>
-
-                    <span>
-                        Eu aceito os
-                        <a href="#">termos e condições</a>
-                    </span>
-
+                    <input type="checkbox" required />
+                    <span>Eu aceito os <a href="#">termos e condições</a></span>
                 </div>
 
-                <button class="btn-register">
-                    Criar Conta
-                </button>
-
+                <button type="submit" class="btn-register">Criar Conta</button>
             </form>
 
-            <div class="login-link">
-
-                Já possui conta?
-                <a href="login.html">
-                    Fazer login
-                </a>
-
-            </div>
-
+            <div class="login-link">Já possui conta? <a asp-controller="Account" asp-action="Login">Fazer login</a></div>
         </div>
-
     </section>
-
 </main>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

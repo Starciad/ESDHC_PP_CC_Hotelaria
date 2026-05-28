@@ -8,54 +8,21 @@
     <link rel="stylesheet" href="~/styles/pages/login.css" />
 }
 
-<!--
-<h2>Login</h2>
-
-<form asp-action="Login" method="post">
-    <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-    </div>
-
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-
-    <div>
-        <input asp-for="RememberMe" />
-        <label asp-for="RememberMe"></label>
-    </div>
-
-    <button type="submit">Entrar</button>
-</form>
--->
-
 <main class="login-container">
 
     <section class="login-left">
-
         <div class="login-text">
             <h1>Luxury Stay Experience</h1>
-
-            <p>
-                Enjoy unforgettable moments with Paradise View Hotel.
-            </p>
+            <p>Enjoy unforgettable moments with Paradise View Hotel.</p>
         </div>
-
     </section>
 
     <section class="login-right">
-        <a href="index.html" class="back-button">
-            <i class="fa-solid fa-arrow-left"></i>
-            Back
+        <a asp-controller="Home" asp-action="Index" class="back-button">
+            <i class="fa-solid fa-arrow-left"></i> Back
         </a>
 
-
         <div class="login-box">
-
             <div class="login-logo">
                 <span style="color:#84724E;">▲</span>
                 <span>PV</span>
@@ -66,67 +33,50 @@
             </span>
 
             <h2>Welcome Back</h2>
+            <p>Login to continue your experience.</p>
 
-            <p>
-                Login to continue your experience.
-            </p>
+            <form asp-controller="Account" asp-action="Login" method="post">
+                @Html.AntiForgeryToken()
 
-            <form onsubmit="event.preventDefault(); alert('Login realizado!')">
+                <div asp-validation-summary="ModelOnly" class="validation-summary-errors"></div>
 
                 <div class="input-group">
-
-                    <label>E-mail</label>
+                    <label asp-for="Email"></label>
 
                     <div class="input-box">
                         <i class="fa-solid fa-envelope"></i>
-
-                        <input type="email"
-                               placeholder="Digite seu e-mail"
-                               required>
+                        <input asp-for="Email" placeholder="Digite seu e-mail" />
                     </div>
 
+                    <span asp-validation-for="Email"class="text-danger"></span>
                 </div>
 
                 <div class="input-group">
-
-                    <label>Senha</label>
+                    <label asp-for="Password"></label>
 
                     <div class="input-box">
                         <i class="fa-solid fa-lock"></i>
-
-                        <input type="password"
-                               placeholder="Digite sua senha"
-                               required>
+                        <input asp-for="Password" placeholder="Digite sua senha" />
                     </div>
 
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
 
                 <div class="login-options">
-
-                    <label>
-                        <input type="checkbox">
-                        Lembrar-me
-                    </label>
-
-                    <a href="#">
-                        Esqueceu a senha?
-                    </a>
-
+                    <label><input asp-for="RememberMe" /> Lembrar-me</label>
+                    <a href="#">Esqueceu a senha?</a>
                 </div>
 
-                <button class="btn-login">
-                    Login
-                </button>
-
+                <button type="submit"class="btn-login">Login</button>
             </form>
 
-            <div class="register-text">
-                Não possui conta?
-                <a href="register.html">Criar conta</a>
-            </div>
-
+            <div class="register-text">Não possui conta? <a asp-controller="Account" asp-action="Register">Criar conta</a></div>
         </div>
-
     </section>
-
 </main>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
