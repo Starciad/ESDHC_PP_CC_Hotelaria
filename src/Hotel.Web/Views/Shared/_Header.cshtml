@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
 
 }
 
@@ -9,14 +12,24 @@
     </div>
 
     <nav class="nav-links">
-        <a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
-        <a asp-area="" asp-controller="Explore" asp-action="Index">Explorar</a>
-        <a asp-area="" asp-controller="Rooms" asp-action="Index">Quartos</a>
-        <a asp-area="" asp-controller="About" asp-action="Index">Sobre</a>
-        <a asp-area="" asp-controller="Contact" asp-action="Index">Contato</a>
+        <a asp-controller="Home" asp-action="Index">Inicio</a>
+        <a asp-controller="Explore" asp-action="Index">Explorar</a>
+        <a asp-controller="Rooms" asp-action="Index">Quartos</a>
+        <a asp-controller="About" asp-action="Index">Sobre</a>
+        <a asp-controller="Contact" asp-action="Index">Contato</a>
     </nav>
 
     <div class="nav-buttons">
-        <a asp-area="" asp-controller="Account" asp-action="Login" class="btn btn-nav">Entrar</a>
+        <!-- If If the user is logged into an account, the logout button will appear. Otherwise, the login button will appear. -->
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <form asp-controller="Account" asp-action="Logout" method="post">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="Login" class="btn btn-nav">Entrar</a>
+        }
     </div>
 </header>
