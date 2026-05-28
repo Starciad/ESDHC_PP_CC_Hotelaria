@@ -418,6 +418,6 @@ FodyWeavers.xsd
 *.msp
 
 # Others
-hotel.db
-hotel.db-shm
-hotel.db-wal
+*.db
+*.db-shm
+*.db-wal
