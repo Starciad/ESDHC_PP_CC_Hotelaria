@@ -12,29 +12,6 @@
     position: relative;
 }
 
-.back-button {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    text-decoration: none;
-    color: var(--text-dark);
-
-    font-weight: 600;
-    margin-bottom: 40px;
-
-    transition: 0.3s;
-}
-
-.back-button i {
-    color: var(--primary-color);
-}
-
-.back-button:hover {
-    color: var(--primary-color);
-    transform: translateX(-3px);
-}
-
 .logo {
     display: flex;
     align-items: center;

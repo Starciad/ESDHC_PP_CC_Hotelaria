@@ -50,32 +50,6 @@
     line-height: 1.7;
 }
 
-/* BACK BUTTON */
-
-.back-button {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    text-decoration: none;
-    color: white;
-
-    font-weight: 600;
-
-    z-index: 10;
-
-    transition: 0.3s;
-}
-
-.back-button:hover {
-    transform: translateX(-3px);
-    color: #E7D7B1;
-}
-
 /* CONTENT */
 
 .explore-content {
