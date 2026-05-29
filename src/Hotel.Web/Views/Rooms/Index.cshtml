@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Hotel.Web.ViewModels.RoomsIndexViewModel
+
+@{
     ViewData["Title"] = "Rooms";
     ViewData["HasHeader"] = true;
 }
@@ -18,114 +20,67 @@
 
     <!-- ROOMS -->
     <section class="rooms-section">
-        <div class="rooms-grid">
-            <!-- ROOM 1 -->
-            <div class="room-card">
-
-                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80"
-                     alt="Room"
-                     class="room-image">
-
-                <div class="room-content">
-
-                    <h2>Standard Ocean View</h2>
-
-                    <p>
-                        Wake up to the relaxing sound of the ocean with elegant interiors and premium comfort.
-                    </p>
-
-                    <div class="amenities">
-
-                        <span class="amenity-tag">2 Adults</span>
-
-                        <span class="amenity-tag">Free Wi-Fi</span>
-
-                        <span class="amenity-tag">Balcony</span>
-
-                    </div>
-
-                    <div class="card-footer">
-
-                        <div class="price">
-                            $1800 <span>/ night</span>
-                        </div>
-
-                        <a href="#" class="btn-book">
-                            Book Now
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- ROOM 2 -->
-
-            <div class="room-card">
-                <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1000&q=80" alt="Room" class="room-image">
-
-                <div class="room-content">
-
-                    <h2>Deluxe Beachfront</h2>
-                    <p>Spacious beachfront room with exclusive access and breathtaking sunset views.</p>
-
-                    <div class="amenities">
-                        <span class="amenity-tag">3 Adults</span>
-                        <span class="amenity-tag">King Bed</span>
-                        <span class="amenity-tag">Beach Access</span>
-                    </div>
-
-                    <div class="card-footer">
-                        <div class="price">$2800 <span>/ night</span></div>
-                        <a href="#" class="btn-book">Book Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ROOM 3 -->
-
-            <div class="room-card">
-
-                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1000&q=80"
-                     alt="Room"
-                     class="room-image">
-
-                <div class="room-content">
-
-                    <h2>Premium Pool Suite</h2>
-
-                    <p>
-                        Ultimate luxury with a private pool, panoramic terrace and premium room service.
-                    </p>
-
-                    <div class="amenities">
-
-                        <span class="amenity-tag">Private Pool</span>
-
-                        <span class="amenity-tag">Room Service</span>
-
-                        <span class="amenity-tag">Panoramic View</span>
-
-                    </div>
-
-                    <div class="card-footer">
-
-                        <div class="price">
-                            $5500 <span>/ night</span>
-                        </div>
-
-                        <a href="#" class="btn-book">
-                            Book Now
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
+        <div>
+            <form method="get" class="filters-form">
+                <input asp-for="Filter.Search" placeholder="Search rooms" />
+                <input asp-for="Filter.MinPrice" type="number" placeholder="Min price" />
+                <input asp-for="Filter.MaxPrice" type="number" placeholder="Max price" />
+                <input asp-for="Filter.Capacity" type="number" placeholder="Guests" />
+                <button type="submit">Filter</button>
+            </form>
         </div>
 
+        <div class="rooms-grid">
+            @foreach (Room room in Model.Rooms)
+            {
+                <div class="room-card">
+                    <img src="@room.ImageUrl" alt="@room.Title" class="room-image">
+                    <div class="room-content">
+                        <h2>@room.Title</h2>
+                        <p>@room.Description</p>
+
+                        <div class="amenities">
+                            <span class="amenity-tag">@room.Capacity Adults</span>
+
+                            @if (room.HasWifi)
+                            {
+                                <span class="amenity-tag">Free Wi-Fi</span>
+                            }
+
+                            @if (room.HasBalcony)
+                            {
+                                <span class="amenity-tag">Balcony</span>
+                            }
+
+                            @if (room.HasPool)
+                            {
+                                <span class="amenity-tag">Pool</span>
+                            }
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="price">$ @room.Price.ToString("F2")<span>/ night</span></div>
+                            <a asp-controller="Reservations" asp-action="Create" asp-route-roomId="@room.Id" class="btn-book">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="pagination">
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <a asp-action="Index"
+                   asp-route-Page="@i"
+                   asp-route-Search="@Model.Filter.Search"
+                   asp-route-MinPrice="@Model.Filter.MinPrice"
+                   asp-route-MaxPrice="@Model.Filter.MaxPrice"
+                   asp-route-Capacity="@Model.Filter.Capacity"
+                   class="page-button @(i == Model.CurrentPage ? "active" : "")">
+                    @i
+                </a>
+            }
+        </div>
     </section>
 </main>

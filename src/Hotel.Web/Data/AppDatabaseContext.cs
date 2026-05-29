@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Hotel.Web.Databases
+namespace Hotel.Web.Data
 {
     public sealed class AppDatabaseContext : IdentityDbContext<ApplicationUser>
     {

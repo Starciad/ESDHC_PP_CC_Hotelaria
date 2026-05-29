@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en-us">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,7 +20,7 @@
 </head>
 <body>
     <!-- HAS HEADER? -->
-    @if (ViewData["HasHeader"] != null && (bool)ViewData["HasHeader"] == true)
+    @if (ViewData["HasHeader"] != null && (bool)ViewData["HasHeader"]! == true)
     {
         @await Html.PartialAsync("~/Views/Shared/_Header.cshtml");
     }

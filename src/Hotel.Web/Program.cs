@@ -1,4 +1,4 @@
-using Hotel.Web.Databases;
+using Hotel.Web.Data;
 using Hotel.Web.Models;
 
 using Microsoft.AspNetCore.Builder;
@@ -10,12 +10,14 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using System;
+using System.Threading.Tasks;
 
 namespace Hotel.Web
 {
     internal static class Program
     {
-        private static void Main(string[] args)
+        [MTAThread]
+        private static async Task Main(string[] args)
         {
             WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -76,6 +78,16 @@ namespace Hotel.Web
             {
                 ILogger logger = serviceProvider.GetRequiredService<ILogger>();
                 logger.LogError(ex, "An error occurred during the migration process.");
+            }
+
+            using (IServiceScope scope = app.Services.CreateScope())
+            {
+                IServiceProvider services = scope.ServiceProvider;
+
+                AppDatabaseContext context = services.GetRequiredService<AppDatabaseContext>();
+                DatabaseInitializer databaseInitializer = new(context);
+
+                await databaseInitializer.SeedAsync();
             }
 
             app.Run();
