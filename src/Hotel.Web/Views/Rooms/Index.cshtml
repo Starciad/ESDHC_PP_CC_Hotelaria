@@ -61,7 +61,7 @@
 
                         <div class="card-footer">
                             <div class="price">$ @room.Price.ToString("F2")<span>/ night</span></div>
-                            <a asp-controller="Reservations" asp-action="Create" asp-route-roomId="@room.Id" class="btn-book">Book Now</a>
+                            <a asp-controller="Reservation" asp-action="Index" asp-route-roomId="@room.Id" class="btn-book">Book Now</a>
                         </div>
                     </div>
                 </div>
