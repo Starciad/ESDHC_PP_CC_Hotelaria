@@ -1,0 +1,298 @@
+﻿.reservation-success-container {
+    max-width: 1400px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.success-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.success-hero h1 {
+    margin: 1rem 0;
+}
+
+.success-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .75rem;
+
+    padding: .75rem 1.25rem;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+
+    backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+.success-badge i {
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   SUMMARY
+========================================= */
+
+.success-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 1rem;
+
+    margin-bottom: 2.5rem;
+}
+
+.summary-card {
+    padding: 1.25rem;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    backdrop-filter: blur(8px);
+
+    transition: transform .2s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-3px);
+}
+
+.summary-card.highlight {
+    border-width: 2px;
+}
+
+.summary-label {
+    display: block;
+
+    margin-bottom: .5rem;
+
+    font-size: .85rem;
+
+    opacity: .75;
+}
+
+.summary-card strong {
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.success-content {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(450px, 1fr));
+
+    gap: 1.5rem;
+}
+
+.info-card {
+    padding: 1.75rem;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    overflow: hidden;
+}
+
+.info-card h2 {
+    margin-bottom: 1.5rem;
+}
+
+/* =========================================
+   ROOM IMAGE
+========================================= */
+
+.room-image {
+    width: 100%;
+    height: 280px;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+
+    margin-bottom: 1.5rem;
+
+    border: 3px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.room-image:hover {
+    transform: scale(1.02);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35);
+}
+
+/* =========================================
+   INFO BLOCKS
+========================================= */
+
+.info-block {
+    margin-bottom: 1rem;
+}
+
+.info-label {
+    display: block;
+
+    margin-bottom: .35rem;
+
+    font-size: .85rem;
+
+    opacity: .7;
+}
+
+.info-value {
+    font-weight: 600;
+}
+
+.info-text {
+    line-height: 1.7;
+}
+
+.info-row {
+    display: flex;
+    gap: 2rem;
+
+    flex-wrap: wrap;
+}
+
+/* =========================================
+   NOTICE
+========================================= */
+
+.notice-box {
+    margin-top: 1.5rem;
+
+    padding: 1rem 1.25rem;
+
+    border-left: 4px solid currentColor;
+
+    border-radius: 12px;
+}
+
+/* =========================================
+   DEPENDENTS
+========================================= */
+
+.dependents-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dependent-item {
+    padding: 1rem 1.25rem;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: .5rem;
+}
+
+.dependent-item strong {
+    font-size: .95rem;
+}
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.success-actions {
+    margin-top: 3rem;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
+}
+
+.success-actions a,
+.success-actions button {
+    min-width: 200px;
+}
+
+/* =========================================
+   PRINT
+========================================= */
+
+@media print {
+
+    .success-actions,
+    header,
+    footer,
+    nav {
+        display: none !important;
+    }
+
+    .reservation-success-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .info-card,
+    .summary-card {
+        box-shadow: none;
+    }
+
+    .room-image {
+        max-height: 250px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .reservation-success-container {
+        padding: 0 1rem;
+    }
+
+    .success-content {
+        grid-template-columns: 1fr;
+    }
+
+    .info-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .room-image {
+        height: 220px;
+    }
+}
