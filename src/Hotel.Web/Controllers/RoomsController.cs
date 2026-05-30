@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Web.Controllers
 {
-    public class RoomsController(AppDatabaseContext appDatabaseContext) : Controller
+    public sealed class RoomsController(AppDatabaseContext appDatabaseContext) : Controller
     {
         private readonly AppDatabaseContext _appDatabaseContext = appDatabaseContext;
         private const int PAGE_SIZE = 9;

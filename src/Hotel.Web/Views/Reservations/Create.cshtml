@@ -1,0 +1,154 @@
+﻿@model Hotel.Web.ViewModels.ReservationCreateViewModel
+
+@{
+    ViewData["Title"] = "Reservation";
+    ViewData["HasHeader"] = true;
+
+    int maxDependents = Math.Max(0, Model.RoomCapacity - 1);
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/styles/pages/reservation.css" />
+}
+
+<main class="reservation-container">
+    <section class="page-header">
+        <span class="subtitle">Paradise View</span>
+        <h1>Finalize your reservation</h1>
+        <p>Review the room details and complete your booking.</p>
+    </section>
+
+    <section class="reservation-layout">
+        <article class="reservation-room-card">
+            <img src="@Model.RoomImageUrl"
+                 alt="@Model.RoomTitle"
+                 class="reservation-room-image" />
+
+            <div class="reservation-room-info">
+                <h2>@Model.RoomTitle</h2>
+                <p>@Model.RoomDescription</p>
+
+                <div class="room-meta">
+                    <span>@Model.RoomCapacity guests</span>
+                    <span>$@Model.RoomPrice per night</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="reservation-form-card">
+            <h2>Reservation details</h2>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <form asp-controller="Reservations"
+                  asp-action="Create"
+                  method="post">
+                @Html.AntiForgeryToken()
+
+                <input asp-for="RoomId" type="hidden" />
+
+                <div class="input-group">
+                    <label asp-for="PretendedCheckInDate"></label>
+                    <input asp-for="PretendedCheckInDate" type="date" />
+                    <span asp-validation-for="PretendedCheckInDate" class="text-danger"></span>
+                </div>
+
+                <div class="input-group">
+                    <label asp-for="PretendedCheckOutDate"></label>
+                    <input asp-for="PretendedCheckOutDate" type="date" />
+                    <span asp-validation-for="PretendedCheckOutDate" class="text-danger"></span>
+                </div>
+
+                <div class="dependents-header">
+                    <h3>Dependents / guests</h3>
+                    <p>Maximum additional guests: @maxDependents</p>
+                </div>
+
+                <div id="dependents-container"
+                     data-max-dependents="@maxDependents">
+                    @for (int i = 0; i < Model.Dependents.Count; i++)
+                    {
+                        <div class="dependent-card" data-dependent-item>
+                            <div class="input-group">
+                                <label>Nome</label>
+                                <input type="text"
+                                       name="Dependents[@i].Name"
+                                       value="@Model.Dependents[i].Name"
+                                       placeholder="Nome do dependente" />
+                            </div>
+
+                            <div class="input-group">
+                                <label>Data de nascimento</label>
+                                <input type="date"
+                                       name="Dependents[@i].BirthdayDate"
+                                       value="@(Model.Dependents[i].BirthdayDate == default
+                                           ? ""
+                                           : Model.Dependents[i].BirthdayDate.ToString("yyyy-MM-dd"))" />
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <button type="button" id="add-dependent" class="btn-secondary">
+                    Add dependent
+                </button>
+
+                <button type="submit" class="btn-book-now">
+                    Confirm reservation
+                </button>
+            </form>
+        </article>
+    </section>
+</main>
+
+<template id="dependent-template">
+    <div class="dependent-card" data-dependent-item>
+        <div class="input-group">
+            <label>Nome</label>
+            <input type="text"
+                   name="Dependents[__index__].Name"
+                   id="Dependents___index___Name"
+                   placeholder="Nome do dependente" />
+        </div>
+
+        <div class="input-group">
+            <label>Data de nascimento</label>
+            <input type="date"
+                   name="Dependents[__index__].BirthdayDate"
+                   id="Dependents___index___BirthdayDate" />
+        </div>
+    </div>
+</template>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        const container = document.getElementById('dependents-container');
+        const template = document.getElementById('dependent-template');
+        const addButton = document.getElementById('add-dependent');
+
+        const maxDependents = parseInt(container.dataset.maxDependents, 10);
+        let nextIndex = container.querySelectorAll('[data-dependent-item]').length;
+
+        function refreshAddButtonState() {
+            addButton.disabled = nextIndex >= maxDependents;
+        }
+
+        addButton.addEventListener('click', () => {
+            if (nextIndex >= maxDependents) {
+                return;
+            }
+
+            const html = template.innerHTML.replaceAll('__index__', nextIndex);
+            container.insertAdjacentHTML('beforeend', html);
+
+            nextIndex++;
+            refreshAddButtonState();
+        });
+
+        refreshAddButtonState();
+    </script>
+}

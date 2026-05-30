@@ -2,7 +2,7 @@
 
 namespace Hotel.Web.Controllers
 {
-    public class ContactController : Controller
+    public sealed class ContactController : Controller
     {
         public IActionResult Index()
         {

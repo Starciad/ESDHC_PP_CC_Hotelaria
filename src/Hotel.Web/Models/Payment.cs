@@ -12,10 +12,18 @@ namespace Hotel.Web.Models
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey("FlowId")]
-        public Flow Flow { get; set; }
+        [Required]
+        public int FlowId { get; set; }
 
-        public DateTime PaymentDate { get; set; }
+        [Required]
+        [Range(1, 999999)]
         public decimal Price { get; set; }
+
+        [Required]
+        public DateTime PaymentDate { get; set; }
+
+        [Required]
+        [ForeignKey("FlowId")]
+        public Flow Flow { get; set; } = default!;
     }
 }

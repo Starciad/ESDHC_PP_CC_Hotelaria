@@ -10,7 +10,7 @@ namespace Hotel.Web.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<decimal>(
+            _ = migrationBuilder.AlterColumn<decimal>(
                 name: "Price",
                 table: "Rooms",
                 type: "TEXT",
@@ -18,7 +18,7 @@ namespace Hotel.Web.Migrations
                 oldClrType: typeof(double),
                 oldType: "REAL");
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "Description",
                 table: "Rooms",
                 type: "TEXT",
@@ -29,35 +29,35 @@ namespace Hotel.Web.Migrations
                 oldType: "TEXT",
                 oldNullable: true);
 
-            migrationBuilder.AddColumn<bool>(
+            _ = migrationBuilder.AddColumn<bool>(
                 name: "HasBalcony",
                 table: "Rooms",
                 type: "INTEGER",
                 nullable: false,
                 defaultValue: false);
 
-            migrationBuilder.AddColumn<bool>(
+            _ = migrationBuilder.AddColumn<bool>(
                 name: "HasPool",
                 table: "Rooms",
                 type: "INTEGER",
                 nullable: false,
                 defaultValue: false);
 
-            migrationBuilder.AddColumn<bool>(
+            _ = migrationBuilder.AddColumn<bool>(
                 name: "HasWifi",
                 table: "Rooms",
                 type: "INTEGER",
                 nullable: false,
                 defaultValue: false);
 
-            migrationBuilder.AddColumn<string>(
+            _ = migrationBuilder.AddColumn<string>(
                 name: "ImageUrl",
                 table: "Rooms",
                 type: "TEXT",
                 maxLength: 500,
                 nullable: true);
 
-            migrationBuilder.AddColumn<string>(
+            _ = migrationBuilder.AddColumn<string>(
                 name: "Title",
                 table: "Rooms",
                 type: "TEXT",
@@ -69,27 +69,27 @@ namespace Hotel.Web.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "HasBalcony",
                 table: "Rooms");
 
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "HasPool",
                 table: "Rooms");
 
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "HasWifi",
                 table: "Rooms");
 
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "ImageUrl",
                 table: "Rooms");
 
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "Title",
                 table: "Rooms");
 
-            migrationBuilder.AlterColumn<double>(
+            _ = migrationBuilder.AlterColumn<double>(
                 name: "Price",
                 table: "Rooms",
                 type: "REAL",
@@ -97,7 +97,7 @@ namespace Hotel.Web.Migrations
                 oldClrType: typeof(decimal),
                 oldType: "TEXT");
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "Description",
                 table: "Rooms",
                 type: "TEXT",

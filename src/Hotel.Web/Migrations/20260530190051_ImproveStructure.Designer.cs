@@ -3,6 +3,7 @@ using System;
 using Hotel.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hotel.Web.Migrations
 {
     [DbContext(typeof(AppDatabaseContext))]
-    partial class AppDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20260530190051_ImproveStructure")]
+    partial class ImproveStructure
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.27");
@@ -24,10 +27,6 @@ namespace Hotel.Web.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("CPF")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -87,6 +86,29 @@ namespace Hotel.Web.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Hotel.Web.Models.Dependent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("BirthdayDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("GuestId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GuestId");
+
+                    b.ToTable("Dependents");
                 });
 
             modelBuilder.Entity("Hotel.Web.Models.Employee", b =>
@@ -166,10 +188,6 @@ namespace Hotel.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ApplicationUserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -233,30 +251,6 @@ namespace Hotel.Web.Migrations
                     b.HasIndex("RoomId");
 
                     b.ToTable("Reserves");
-                });
-
-            modelBuilder.Entity("Hotel.Web.Models.ReserveDependent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("BirthdayDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ReserveId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReserveId");
-
-                    b.ToTable("ReserveDependents");
                 });
 
             modelBuilder.Entity("Hotel.Web.Models.Room", b =>
@@ -428,6 +422,17 @@ namespace Hotel.Web.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Hotel.Web.Models.Dependent", b =>
+                {
+                    b.HasOne("Hotel.Web.Models.Guest", "Guest")
+                        .WithMany()
+                        .HasForeignKey("GuestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Guest");
+                });
+
             modelBuilder.Entity("Hotel.Web.Models.Flow", b =>
                 {
                     b.HasOne("Hotel.Web.Models.Employee", "Employee")
@@ -493,17 +498,6 @@ namespace Hotel.Web.Migrations
                     b.Navigation("Room");
                 });
 
-            modelBuilder.Entity("Hotel.Web.Models.ReserveDependent", b =>
-                {
-                    b.HasOne("Hotel.Web.Models.Reserve", "Reserve")
-                        .WithMany("Dependents")
-                        .HasForeignKey("ReserveId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Reserve");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -553,11 +547,6 @@ namespace Hotel.Web.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Hotel.Web.Models.Reserve", b =>
-                {
-                    b.Navigation("Dependents");
                 });
 #pragma warning restore 612, 618
         }

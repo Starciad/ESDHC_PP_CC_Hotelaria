@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.Web.Controllers
 {
-    public class AccountController(
+    public sealed class AccountController(
         UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager) : Controller
     {
@@ -16,13 +16,14 @@ namespace Hotel.Web.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager = signInManager;
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult Register(string? returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model, string? returnUrl = null)
         {
             if (!ModelState.IsValid)
             {
@@ -41,12 +42,12 @@ namespace Hotel.Web.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                return RedirectToAction("Index", "Home");
+                return LocalRedirect(returnUrl ?? Url.Action("Index", "Home")!);
             }
 
             foreach (IdentityError error in result.Errors)
             {
-                ModelState.AddModelError("", error.Description);
+                ModelState.AddModelError(string.Empty, error.Description);
             }
 
             return View(model);

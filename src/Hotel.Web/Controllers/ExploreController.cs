@@ -2,7 +2,7 @@
 
 namespace Hotel.Web.Controllers
 {
-    public class ExploreController : Controller
+    public sealed class ExploreController : Controller
     {
         public IActionResult Index()
         {

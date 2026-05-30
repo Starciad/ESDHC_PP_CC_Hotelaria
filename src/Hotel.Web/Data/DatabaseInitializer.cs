@@ -10,7 +10,7 @@ namespace Hotel.Web.Data
     {
         public async Task SeedAsync()
         {
-            await context.Database.EnsureCreatedAsync();
+            _ = await context.Database.EnsureCreatedAsync();
 
             if (context.Rooms.Any())
             {
@@ -65,11 +65,11 @@ namespace Hotel.Web.Data
                 {
                     Title = "Luxury Mountain Retreat",
                     Description = "Elegant mountain-side suite with fireplace and breathtaking panoramic scenery.",
-                    
+
                     Price = 4200,
                     Capacity = 4,
                     ImageUrl = "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80",
-                    
+
                     HasWifi = true,
                     HasBalcony = true,
                     HasPool = false
@@ -79,7 +79,7 @@ namespace Hotel.Web.Data
                 {
                     Title = "Minimalist Executive Room",
                     Description = "Modern minimalist design focused on comfort and productivity.",
-                    
+
                     Price = 2100,
                     Capacity = 2,
                     ImageUrl = "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1000&q=80",
@@ -91,7 +91,7 @@ namespace Hotel.Web.Data
             ];
 
             await context.Rooms.AddRangeAsync(rooms);
-            await context.SaveChangesAsync();
+            _ = await context.SaveChangesAsync();
         }
     }
 }

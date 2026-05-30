@@ -37,7 +37,6 @@
     min-height: calc(85vh - 100px);
     padding-left: 8%;
     align-items: center;
-    margin-bottom: 120px;
 }
 
 .hero-content {
@@ -114,145 +113,19 @@
     border-bottom-left-radius: 4px;
 }
 
-/* BOOKING BAR */
-.booking-bar {
-    position: absolute;
-    bottom: -50px;
-    left: 8%;
-    width: 84%;
-    background-color: white;
-    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.06);
-    border-radius: 4px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr) auto;
-    align-items: center;
-    padding: 15px 25px;
-    gap: 15px;
-    z-index: 10;
-}
-
-.booking-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-right: 1px solid #EAEAEA;
-    padding-right: 15px;
-}
-
-.booking-item:nth-last-child(2) {
-    border-right: none;
-}
-
-.booking-item .icon {
-    color: var(--text-dark);
-    font-size: 18px;
-}
-
-.booking-details {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.booking-details label {
-    font-size: 13px;
-    color: var(--text-light);
-    margin-bottom: 2px;
-    font-weight: 500;
-}
-
-/* SELECTS AND DATE INPUTS STYLING */
-.booking-details select,
-.booking-details input[type="date"] {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-dark);
-    border: none;
-    background: transparent;
-    outline: none;
-    cursor: pointer;
-    width: 100%;
-    padding: 2px 0;
-}
-
-/* Select arrow customization */
-/* CUSTOM SELECT */
-.booking-details select {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 100%;
-    padding: 10px 40px 10px 12px;
-    border: 1px solid #E5E5E5;
-    border-radius: 12px;
-    background-color: #FAFAFA;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-dark);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    /* custom arrow */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2384724E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    background-size: 14px;
-}
-
-/* HOVER */
-.booking-details select:hover {
-    border-color: var(--primary-color);
-    background-color: #FFFFFF;
-}
-
-/* FOCUS */
-.booking-details select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(132, 114, 78, 0.15);
-    background-color: white;
-}
-
-/* OPTIONS */
-.booking-details select option {
-    background-color: white;
-    color: var(--text-dark);
-    padding: 10px;
-}
-
-/* Native date input customization to hide the default ugly icon and use ours */
-.booking-details input[type="date"]::-webkit-calendar-picker-indicator {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231A1A1A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-}
-
-.btn-booking-submit {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 18px 35px;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 4px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.3s;
-}
-
 /* FACILITIES SECTION */
-.facilities-section {
+.facilities-container {
     text-align: center;
-    padding: 120px 20px 60px 20px;
+    padding: 60px 20px 60px 20px;
 }
 
-.facilities-section h2 {
+.facilities-container h2 {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 12px;
 }
 
-.facilities-section p {
+.facilities-container p {
     color: var(--text-light);
     font-size: 16px;
 }
@@ -267,22 +140,6 @@
 
     .hero-image {
         display: none;
-    }
-
-    .booking-bar {
-        grid-template-columns: 1fr 1fr;
-        bottom: -260px;
-    }
-
-    .booking-item {
-        border-right: none;
-        border-bottom: 1px solid #EAEAEA;
-        padding-bottom: 12px;
-    }
-
-    .btn-booking-submit {
-        grid-column: span 2;
-        padding: 15px;
     }
 }
 
@@ -301,14 +158,5 @@
 
     .hero-content h1 {
         font-size: 36px;
-    }
-
-    .booking-bar {
-        grid-template-columns: 1fr;
-        bottom: -400px;
-    }
-
-    .btn-booking-submit {
-        grid-column: span 1;
     }
 }

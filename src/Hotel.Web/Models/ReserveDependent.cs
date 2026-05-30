@@ -2,32 +2,28 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hotel.Web.Models
 {
     [PrimaryKey(nameof(Id))]
-    public sealed class Employee
+    public sealed class ReserveDependent
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
+        public int ReserveId { get; set; }
 
         [Required]
         [MaxLength(255)]
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        [MaxLength(14)]
-        public string CPF { get; set; } = string.Empty;
-
-        [Range(1, 999999)]
-        public decimal Salary { get; set; }
-
-        [MaxLength(14)]
-        public string? PIS { get; set; }
+        public DateTime BirthdayDate { get; set; }
 
         [Required]
-        public DateTime AdmissionDate { get; set; }
-
-        public bool IsAdministrator { get; set; }
+        [ForeignKey(nameof(ReserveId))]
+        public Reserve Reserve { get; set; } = default!;
     }
 }

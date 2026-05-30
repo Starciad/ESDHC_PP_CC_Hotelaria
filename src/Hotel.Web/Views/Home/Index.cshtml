@@ -5,87 +5,116 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/styles/pages/home.css" />
+    <link rel="stylesheet" href="~/styles/pages/explore.css" />
 }
 
-<main class="hero-container">
-    <section class="hero-content">
-        <span class="subtitle">Paradise View</span>
-        <h1>Hotel for every moment rich in emotion</h1>
-        <p>Every moment feels like the first time in paradise view</p>
+<main>
+    <section class="hero-container">
+        <section class="hero-content">
+            <span class="subtitle">Paradise View</span>
+            <h1>Hotel for every moment rich in emotion</h1>
+            <p>Every moment feels like the first time in paradise view</p>
 
-        <div class="hero-actions">
-            <button class="btn btn-primary">Book now</button>
-            <button class="btn-tour">
-                <span class="play-icon"><i class="fa-solid fa-play"></i></span>
-                Take a tour
-            </button>
-        </div>
+            <div class="hero-actions">
+                <a asp-controller="Rooms" asp-action="Index" class="btn btn-primary">Book now</a>
+                <a asp-controller="Explore" asp-action="Index" class="btn-tour">
+                    <span class="play-icon"><i class="fa-solid fa-play"></i></span>
+                    Take a tour
+                </a>
+            </div>
+        </section>
+
+        <section class="hero-image">
+            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" alt="Paradise View Resort">
+        </section>
     </section>
 
-    <section class="hero-image">
-        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" alt="Paradise View Resort">
+    <section class="facilities-container">
+        <h2>Our Facilities</h2>
+        <p>We offer modern (5 star) hotel facilities for your comfort.</p>
     </section>
 
-    <form class="booking-bar" onsubmit="event.preventDefault(); alert('Reserva enviada!');">
+    <section class="explore-container">
+        <!-- HEADER -->
+        <section class="explore-header">
+            <a asp-controller="Home" asp-action="Index" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
 
-        <div class="booking-item">
-            <i class="fa-solid fa-location-dot icon"></i>
-            <div class="booking-details">
-                <label for="location">Location</label>
-                <select id="location" name="location" required>
-                    <option value="Seicheles">Seychelles</option>
-                    <option value="lagos">Zanzibar</option>
-                    <option value="london">Madagascar</option>
-                </select>
+            <div class="header-content">
+                <span>Paradise View</span>
+
+                <h1>Explore Luxury Experiences</h1>
+                <p>Discover exclusive experiences, premium accommodations and unforgettable moments designed for your comfort.</p>
             </div>
-        </div>
+        </section>
 
-        <div class="booking-item">
-            <i class="fa-solid fa-hotel icon"></i>
-            <div class="booking-details">
-                <label for="room-type">Room type</label>
-                <select id="room-type" name="room-type">
-                    <option value="standard">Standard</option>
-                    <option value="deluxe">Deluxe Suite</option>
-                    <option value="penthouse">Penthouse</option>
-                </select>
+        <!-- CONTENT -->
+        <section class="explore-content">
+            <div class="section-title">
+                <h2>Explore Our Experiences</h2>
+                <p>Paradise View offers luxury services and breathtaking experiences for every guest.</p>
             </div>
-        </div>
 
-        <div class="booking-item">
-            <i class="fa-solid fa-user icon"></i>
-            <div class="booking-details">
-                <label for="persons">Person</label>
-                <select id="persons" name="persons">
-                    <option value="1">01</option>
-                    <option value="2">02</option>
-                    <option value="3">03</option>
-                    <option value="4">04+</option>
-                </select>
+            <!-- FEATURES -->
+            <div class="features">
+
+                <div class="feature-box">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-spa"></i>
+                    </div>
+
+                    <h3>Spa & Wellness</h3>
+
+                    <p>
+                        Relax with premium spa treatments and wellness experiences.
+                    </p>
+
+                </div>
+
+                <div class="feature-box">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-dumbbell"></i>
+                    </div>
+
+                    <h3>Fitness Center</h3>
+
+                    <p>
+                        Modern gym equipment available 24 hours for all guests.
+                    </p>
+
+                </div>
+
+                <div class="feature-box">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-water-ladder"></i>
+                    </div>
+
+                    <h3>Private Pool</h3>
+
+                    <p>
+                        Exclusive private pool areas with luxury service and comfort.
+                    </p>
+
+                </div>
+
+                <div class="feature-box">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-champagne-glasses"></i>
+                    </div>
+
+                    <h3>Luxury Events</h3>
+
+                    <p>
+                        Celebrate unforgettable moments with elegant event experiences.
+                    </p>
+
+                </div>
             </div>
-        </div>
-
-        <div class="booking-item">
-            <i class="fa-solid fa-calendar-days icon"></i>
-            <div class="booking-details">
-                <label for="checkin">Check in</label>
-                <input type="date" id="checkin" name="checkin" value="2023-03-09" required>
-            </div>
-        </div>
-
-        <div class="booking-item">
-            <i class="fa-solid fa-calendar-days icon"></i>
-            <div class="booking-details">
-                <label for="checkout">Check out</label>
-                <input type="date" id="checkout" name="checkout" value="2023-03-13" required>
-            </div>
-        </div>
-
-        <button type="submit" class="btn-booking-submit">Book Now</button>
-    </form>
+        </section>
+    </section>
 </main>
-
-<section class="facilities-section">
-    <h2>Our Facilities</h2>
-    <p>We offer modern (5 star) hotel facilities for your comfort.</p>
-</section>
