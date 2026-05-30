@@ -65,6 +65,28 @@
                 </div>
 
                 <div class="input-group">
+                    <label asp-for="CPF"></label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-id-card"></i>
+                        <input asp-for="CPF" placeholder="Digite seu CPF" />
+                    </div>
+
+                    <span asp-validation-for="CPF" class="text-danger"></span>
+                </div>
+
+                <div class="input-group">
+                    <label asp-for="PhoneNumber"></label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-phone"></i>
+                        <input asp-for="PhoneNumber" placeholder="Digite seu telefone" />
+                    </div>
+
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="input-group">
                     <label asp-for="Password"></label>
 
                     <div class="input-box">

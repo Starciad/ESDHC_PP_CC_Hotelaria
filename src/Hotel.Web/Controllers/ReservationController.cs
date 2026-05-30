@@ -40,6 +40,13 @@ namespace Hotel.Web.Controllers
                 return NotFound();
             }
 
+            ApplicationUser? appUser = await _userManager.GetUserAsync(User);
+
+            if (appUser is null)
+            {
+                return Challenge();
+            }
+
             ReservationCreateViewModel model = new()
             {
                 RoomId = room.Id,

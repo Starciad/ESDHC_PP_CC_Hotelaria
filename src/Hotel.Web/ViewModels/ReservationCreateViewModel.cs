@@ -14,17 +14,6 @@ namespace Hotel.Web.ViewModels
         public decimal RoomPrice { get; set; }
         public int RoomCapacity { get; set; }
 
-        [Required(ErrorMessage = "O nome completo é obrigatório.")]
-        [Display(Name = "Nome completo")]
-        public string GuestName { get; set; } = string.Empty;
-
-        [Required(ErrorMessage = "O CPF é obrigatório.")]
-        [Display(Name = "CPF")]
-        public string CPF { get; set; } = string.Empty;
-
-        [Display(Name = "Telefone")]
-        public string? Phone { get; set; }
-
         [Required(ErrorMessage = "A data de check-in é obrigatória.")]
         [DataType(DataType.Date)]
         [Display(Name = "Check-in")]

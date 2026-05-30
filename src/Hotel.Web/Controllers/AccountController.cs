@@ -34,6 +34,8 @@ namespace Hotel.Web.Controllers
             {
                 FullName = model.FullName,
                 UserName = model.Email,
+                CPF = model.CPF,
+                PhoneNumber = model.PhoneNumber,
                 Email = model.Email
             };
 
