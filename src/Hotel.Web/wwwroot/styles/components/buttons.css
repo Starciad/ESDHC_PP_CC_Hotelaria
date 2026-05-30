@@ -1,3 +1,41 @@
+.btn {
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.3s;
+    text-decoration: none;
+}
+
+.btn-nav {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 28px;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 16px 35px;
+    font-size: 16px;
+    border-radius: 25px;
+}
+.btn-tour {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: opacity 0.3s;
+    text-decoration: none;
+}
+
 .btn-register {
     width: 100%;
     border: none;
@@ -9,11 +47,6 @@
     font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
-}
-
-.btn-register:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
 }
 
 .login-link {
@@ -41,12 +74,6 @@
     transition: 0.3s;
 }
 
-.btn-login:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
-
-/* BACK BUTTON */
 .back-button {
     position: absolute;
     top: 30px;
@@ -65,12 +92,6 @@
     color: var(--primary-color);
 }
 
-.back-button:hover {
-    color: var(--primary-color);
-    transform: translateX(-3px);
-}
-
-/* NAVBAR BUTTONS */
 .nav-buttons {
     display: flex;
     gap: 15px;
@@ -87,7 +108,29 @@
     transition: all 0.3s ease;
 }
 
+/* EVENTS */
+
 .btn-login-nav:hover {
     background-color: var(--primary-color);
     color: white;
+}
+
+.btn-register:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.btn-login:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.back-button:hover {
+    color: var(--primary-color);
+    transform: translateX(-3px);
+}
+
+.btn:hover,
+.btn-tour:hover {
+    opacity: 0.85;
 }

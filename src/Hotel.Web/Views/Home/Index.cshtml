@@ -17,7 +17,7 @@
 
             <div class="hero-actions">
                 <a asp-controller="Rooms" asp-action="Index" class="btn btn-primary">Book now</a>
-                <a asp-controller="Explore" asp-action="Index" class="btn-tour">
+                <a href="#tour-section" class="btn-tour">
                     <span class="play-icon"><i class="fa-solid fa-play"></i></span>
                     Take a tour
                 </a>
@@ -37,12 +37,8 @@
     <section class="explore-container">
         <!-- HEADER -->
         <section class="explore-header">
-            <a asp-controller="Home" asp-action="Index" class="back-button">
-                <i class="fa-solid fa-arrow-left"></i> Back
-            </a>
-
             <div class="header-content">
-                <span>Paradise View</span>
+                <span id="tour-section">Paradise View</span>
 
                 <h1>Explore Luxury Experiences</h1>
                 <p>Discover exclusive experiences, premium accommodations and unforgettable moments designed for your comfort.</p>
