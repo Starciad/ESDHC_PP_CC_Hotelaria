@@ -64,26 +64,23 @@
                     <p>Maximum additional guests: @maxDependents</p>
                 </div>
 
-                <div id="dependents-container"
-                     data-max-dependents="@maxDependents">
+                <div id="dependents-container" data-max-dependents="@maxDependents">
                     @for (int i = 0; i < Model.Dependents.Count; i++)
                     {
                         <div class="dependent-card" data-dependent-item>
+                            <div class="dependent-header">
+                                <h4>Dependent @(i + 1)</h4>
+                                <button type="button" class="btn-remove-dependent">Remove</button>
+                            </div>
+
                             <div class="input-group">
                                 <label>Nome</label>
-                                <input type="text"
-                                       name="Dependents[@i].Name"
-                                       value="@Model.Dependents[i].Name"
-                                       placeholder="Nome do dependente" />
+                                <input type="text" name="Dependents[@i].Name" value="@Model.Dependents[i].Name" />
                             </div>
 
                             <div class="input-group">
                                 <label>Data de nascimento</label>
-                                <input type="date"
-                                       name="Dependents[@i].BirthdayDate"
-                                       value="@(Model.Dependents[i].BirthdayDate == default
-                                           ? ""
-                                           : Model.Dependents[i].BirthdayDate.ToString("yyyy-MM-dd"))" />
+                                <input type="date" name="Dependents[@i].BirthdayDate" value="@Model.Dependents[i].BirthdayDate.ToString("yyyy-MM-dd")" />
                             </div>
                         </div>
                     }
@@ -125,30 +122,5 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 
-    <script>
-        const container = document.getElementById('dependents-container');
-        const template = document.getElementById('dependent-template');
-        const addButton = document.getElementById('add-dependent');
-
-        const maxDependents = parseInt(container.dataset.maxDependents, 10);
-        let nextIndex = container.querySelectorAll('[data-dependent-item]').length;
-
-        function refreshAddButtonState() {
-            addButton.disabled = nextIndex >= maxDependents;
-        }
-
-        addButton.addEventListener('click', () => {
-            if (nextIndex >= maxDependents) {
-                return;
-            }
-
-            const html = template.innerHTML.replaceAll('__index__', nextIndex);
-            container.insertAdjacentHTML('beforeend', html);
-
-            nextIndex++;
-            refreshAddButtonState();
-        });
-
-        refreshAddButtonState();
-    </script>
+    <script src="~/scripts/reservations.js"></script>
 }
