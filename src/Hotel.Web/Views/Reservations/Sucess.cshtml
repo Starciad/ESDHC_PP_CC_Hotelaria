@@ -1,0 +1,176 @@
+﻿@model Hotel.Web.Models.Reserve
+
+@{
+    ViewData["Title"] = "Reserva Confirmada";
+    ViewData["HasHeader"] = true;
+
+    int nights = (Model.PretendedCheckOutDate.Date - Model.PretendedCheckInDate.Date).Days;
+    int dependentsCount = Model.Dependents?.Count ?? 0;
+    int totalGuests = 1 + dependentsCount;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/styles/pages/reservation-success.css" />
+}
+
+<main class="reservation-success-container">
+
+    <section class="success-hero">
+        <div class="success-badge">
+            <i class="fa-solid fa-circle-check"></i>
+            Reservation confirmed
+        </div>
+
+        <h1>Sua reserva foi realizada com sucesso</h1>
+        <p>Guarde este comprovante para consultar os detalhes da sua estadia.</p>
+    </section>
+
+    <section class="success-summary">
+        <article class="summary-card highlight">
+            <span class="summary-label">Código da reserva</span>
+            <strong>#@Model.Id</strong>
+        </article>
+
+        <article class="summary-card">
+            <span class="summary-label">Quarto</span>
+            <strong>@Model.Room?.Title</strong>
+        </article>
+
+        <article class="summary-card">
+            <span class="summary-label">Período</span>
+            <strong>
+                @Model.PretendedCheckInDate.ToString("dd/MM/yyyy")
+                -
+                @Model.PretendedCheckOutDate.ToString("dd/MM/yyyy")
+            </strong>
+        </article>
+
+        <article class="summary-card">
+            <span class="summary-label">Noites</span>
+            <strong>@nights</strong>
+        </article>
+
+        <article class="summary-card">
+            <span class="summary-label">Hóspedes</span>
+            <strong>@totalGuests</strong>
+        </article>
+    </section>
+
+    <section class="success-content">
+        <article class="info-card room-card">
+            <h2>Detalhes do quarto</h2>
+
+            @if (!string.IsNullOrWhiteSpace(Model.Room?.ImageUrl))
+            {
+                <img src="@Model.Room.ImageUrl"
+                     alt="@Model.Room.Title"
+                     class="room-image" />
+            }
+
+            <div class="info-block">
+                <span class="info-label">Nome</span>
+                <span class="info-value">@Model.Room?.Title</span>
+            </div>
+
+            <div class="info-block">
+                <span class="info-label">Descrição</span>
+                <p class="info-text">@Model.Room?.Description</p>
+            </div>
+
+            <div class="info-row">
+                <div class="info-block">
+                    <span class="info-label">Capacidade</span>
+                    <span class="info-value">@Model.Room?.Capacity pessoas</span>
+                </div>
+
+                <div class="info-block">
+                    <span class="info-label">Valor por diária</span>
+                    <span class="info-value">$@Model.Room?.Price</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="info-card guest-card">
+            <h2>Dados do hóspede principal</h2>
+
+            <div class="info-block">
+                <span class="info-label">Nome</span>
+                <span class="info-value">@Model.Guest?.Name</span>
+            </div>
+
+            <div class="info-block">
+                <span class="info-label">CPF</span>
+                <span class="info-value">@Model.Guest?.CPF</span>
+            </div>
+
+            <div class="info-block">
+                <span class="info-label">Telefone</span>
+                <span class="info-value">@Model.Guest?.Phone</span>
+            </div>
+        </article>
+
+        <article class="info-card stay-card">
+            <h2>Período da estadia</h2>
+
+            <div class="info-row">
+                <div class="info-block">
+                    <span class="info-label">Check-in</span>
+                    <span class="info-value">
+                        @Model.PretendedCheckInDate.ToString("dd/MM/yyyy")
+                    </span>
+                </div>
+
+                <div class="info-block">
+                    <span class="info-label">Check-out</span>
+                    <span class="info-value">
+                        @Model.PretendedCheckOutDate.ToString("dd/MM/yyyy")
+                    </span>
+                </div>
+            </div>
+
+            <div class="notice-box">
+                O quarto ficará reservado para o período informado, sujeito às políticas do hotel.
+            </div>
+        </article>
+
+        <article class="info-card dependents-card">
+            <h2>Dependentes / convidados</h2>
+
+            @if (Model.Dependents != null && Model.Dependents.Any())
+            {
+                <div class="dependents-list">
+                    @foreach (var dependent in Model.Dependents)
+                    {
+                        <div class="dependent-item">
+                            <strong>@dependent.Name</strong>
+                            <span>Nascimento: @dependent.BirthdayDate.ToString("dd/MM/yyyy")</span>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="info-text">
+                    Nenhum dependente foi adicionado a esta reserva.
+                </p>
+            }
+        </article>
+    </section>
+
+    <section class="success-actions">
+        <button type="button" class="btn-print" onclick="window.print()">
+            <i class="fa-solid fa-print"></i>
+            Imprimir comprovante
+        </button>
+
+        <a asp-controller="Rooms" asp-action="Index" class="btn-secondary">
+            <i class="fa-solid fa-bed"></i>
+            Voltar aos quartos
+        </a>
+
+        <a asp-controller="Home" asp-action="Index" class="btn-primary">
+            <i class="fa-solid fa-house"></i>
+            Ir para a página inicial
+        </a>
+    </section>
+</main>

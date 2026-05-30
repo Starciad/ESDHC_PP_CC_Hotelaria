@@ -1,4 +1,5 @@
-﻿.reservation-container {
+﻿
+.reservation-page {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -11,18 +12,17 @@
     background-size: cover;
     background-position: center;
     position: relative;
-
     display: flex;
     align-items: flex-end;
     padding: 60px;
 }
 
-.reservation-left::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-}
+    .reservation-left::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.45);
+    }
 
 .left-content {
     position: relative;
@@ -31,34 +31,32 @@
     max-width: 500px;
 }
 
-.left-content span {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    color: #E7D7B1;
-    font-size: 28px;
-}
+    .left-content span {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        color: #E7D7B1;
+        font-size: 28px;
+    }
 
-.left-content h1 {
-    font-size: 56px;
-    line-height: 1.1;
-    margin: 18px 0;
-}
+    .left-content h1 {
+        font-size: 56px;
+        line-height: 1.1;
+        margin: 18px 0;
+    }
 
-.left-content p {
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.8);
-}
+    .left-content p {
+        line-height: 1.8;
+        color: rgba(255,255,255,0.8);
+    }
 
 /* RIGHT */
 
 .reservation-right {
     background: white;
     padding: 50px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     position: relative;
 }
 
@@ -73,14 +71,13 @@
     display: flex;
     align-items: center;
     gap: 6px;
-
     margin-bottom: 35px;
 }
 
-.logo span {
-    font-size: 22px;
-    font-weight: bold;
-}
+    .logo span {
+        font-size: 22px;
+        font-weight: bold;
+    }
 
 .subtitle {
     color: var(--primary-color);
@@ -100,8 +97,13 @@
     margin-bottom: 35px;
 }
 
-/* FORM */
+/* ELEMENTS */
+.reservation-room-image {
+    width: 100%;
+    border-radius: 32px;
+}
 
+/* FORM */
 .reservation-form {
     display: grid;
     gap: 22px;
@@ -116,22 +118,17 @@
 .input-box {
     display: flex;
     align-items: center;
-
     background: #FAFAFA;
-
     border: 1px solid #E5E5E5;
     border-radius: 14px;
-
     padding: 15px;
-
     transition: 0.3s;
 }
 
 .input-box:focus-within {
     border-color: var(--primary-color);
     background: white;
-
-    box-shadow: 0 0 0 4px rgba(132, 114, 78, 0.15);
+    box-shadow: 0 0 0 4px rgba(132,114,78,0.15);
 }
 
 .input-box i {
@@ -145,7 +142,6 @@
     border: none;
     outline: none;
     background: transparent;
-
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 15px;
 }
@@ -154,29 +150,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-}
-
-/* BUTTON */
-
-.btn-reserve {
-    border: none;
-    background: var(--primary-color);
-    color: white;
-
-    padding: 18px;
-    border-radius: 16px;
-
-    font-size: 16px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-.btn-reserve:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
 }
 
 /* RESPONSIVE */

@@ -3,49 +3,6 @@
     color: inherit;
 }
 
-/* HEADER */
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.logo-nav {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.logo-nav span {
-    font-size: 22px;
-    font-weight: bold;
-    color: var(--text-dark);
-}
-
-nav {
-    display: flex;
-    gap: 30px;
-}
-
-nav a {
-    color: var(--text-light);
-    font-size: 15px;
-    transition: 0.3s;
-}
-
-nav a:hover,
-nav a.active {
-    color: var(--text-dark);
-    font-weight: 600;
-}
-
 /* PAGE HEADER */
 
 .page-header {

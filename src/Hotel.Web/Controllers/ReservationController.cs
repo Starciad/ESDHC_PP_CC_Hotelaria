@@ -155,7 +155,7 @@ namespace Hotel.Web.Controllers
 
             foreach (ReservationDependentInputViewModel dependent in model.Dependents)
             {
-                _ = _context.ReserveDependents.Add(new ReserveDependent
+                _ = _context.ReserveDependents.Add(new()
                 {
                     ReserveId = reserve.Id,
                     Name = dependent.Name,

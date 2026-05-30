@@ -11,111 +11,113 @@
     <link rel="stylesheet" href="~/styles/pages/reservation.css" />
 }
 
-<main class="reservation-container">
-    <section class="page-header">
-        <span class="subtitle">Paradise View</span>
-        <h1>Finalize your reservation</h1>
-        <p>Review the room details and complete your booking.</p>
-    </section>
-
-    <section class="reservation-layout">
-        <article class="reservation-room-card">
-            <img src="@Model.RoomImageUrl"
-                 alt="@Model.RoomTitle"
-                 class="reservation-room-image" />
-
-            <div class="reservation-room-info">
-                <h2>@Model.RoomTitle</h2>
-                <p>@Model.RoomDescription</p>
-
-                <div class="room-meta">
-                    <span>@Model.RoomCapacity guests</span>
-                    <span>$@Model.RoomPrice per night</span>
-                </div>
-            </div>
-        </article>
-
-        <article class="reservation-form-card">
-            <h2>Reservation details</h2>
-
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <form asp-controller="Reservations"
-                  asp-action="Create"
-                  method="post">
-                @Html.AntiForgeryToken()
-
-                <input asp-for="RoomId" type="hidden" />
-
-                <div class="input-group">
-                    <label asp-for="PretendedCheckInDate"></label>
-                    <input asp-for="PretendedCheckInDate" type="date" />
-                    <span asp-validation-for="PretendedCheckInDate" class="text-danger"></span>
-                </div>
-
-                <div class="input-group">
-                    <label asp-for="PretendedCheckOutDate"></label>
-                    <input asp-for="PretendedCheckOutDate" type="date" />
-                    <span asp-validation-for="PretendedCheckOutDate" class="text-danger"></span>
-                </div>
-
-                <div class="dependents-header">
-                    <h3>Dependents / guests</h3>
-                    <p>Maximum additional guests: @maxDependents</p>
-                </div>
-
-                <div id="dependents-container" data-max-dependents="@maxDependents">
-                    @for (int i = 0; i < Model.Dependents.Count; i++)
-                    {
-                        <div class="dependent-card" data-dependent-item>
-                            <div class="dependent-header">
-                                <h4>Dependent @(i + 1)</h4>
-                                <button type="button" class="btn-remove-dependent">Remove</button>
-                            </div>
-
-                            <div class="input-group">
-                                <label>Nome</label>
-                                <input type="text" name="Dependents[@i].Name" value="@Model.Dependents[i].Name" />
-                            </div>
-
-                            <div class="input-group">
-                                <label>Data de nascimento</label>
-                                <input type="date" name="Dependents[@i].BirthdayDate" value="@Model.Dependents[i].BirthdayDate.ToString("yyyy-MM-dd")" />
-                            </div>
-                        </div>
-                    }
-                </div>
-
-                <button type="button" id="add-dependent" class="btn-secondary">
-                    Add dependent
-                </button>
-
-                <button type="submit" class="btn-book-now">
-                    Confirm reservation
-                </button>
-            </form>
-        </article>
-    </section>
-</main>
-
 <template id="dependent-template">
     <div class="dependent-card" data-dependent-item>
+        <div class="dependent-header">
+            <h5>Dependent</h5>
+            <button type="button" class="btn btn-danger">Remove</button>
+        </div>
+
         <div class="input-group">
             <label>Nome</label>
-            <input type="text"
-                   name="Dependents[__index__].Name"
-                   id="Dependents___index___Name"
-                   placeholder="Nome do dependente" />
+
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" name="Dependents[__index__].Name" placeholder="Nome do dependente" />
+            </div>
         </div>
 
         <div class="input-group">
             <label>Data de nascimento</label>
-            <input type="date"
-                   name="Dependents[__index__].BirthdayDate"
-                   id="Dependents___index___BirthdayDate" />
+
+            <div class="input-box">
+                <i class="fa-solid fa-calendar-days"></i>
+                <input type="date" name="Dependents[__index__].BirthdayDate" />
+            </div>
         </div>
     </div>
 </template>
+
+<main class="reservation-container">
+    <!-- LEFT -->
+    <section class="reservation-left">
+        <div class="left-content">
+            <span>Paradise View</span>
+
+            <h1>Your Luxury Stay Starts Here</h1>
+            <p>Reserve your room now and enjoy unforgettable experiences, premium comfort and exceptional hospitality.</p>
+        </div>
+    </section>
+
+    <!-- RIGHT -->
+    <section class="reservation-right">
+        <div class="reservation-box">
+            <article class="reservation-room-card">
+                <img src="@Model.RoomImageUrl" alt="@Model.RoomTitle" class="reservation-room-image" />
+                <div class="reservation-room-info">
+                    <h2>@Model.RoomTitle</h2>
+                    <p>@Model.RoomDescription</p>
+
+                    <div class="room-meta">
+                        <span>@Model.RoomCapacity guests</span>
+                        <span>$@Model.RoomPrice per night</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- FORM -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <form asp-controller="Reservations" asp-action="Create" method="post" class="reservation-form">
+                @Html.AntiForgeryToken()
+
+                <input asp-for="RoomId" type="hidden" />
+
+                <div class="double-input">
+                    <div class="input-group">
+                        <label asp-for="PretendedCheckInDate"></label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <input asp-for="PretendedCheckInDate" type="date" />
+                        </div>
+
+                        <span asp-validation-for="PretendedCheckInDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <label asp-for="PretendedCheckOutDate"></label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <input asp-for="PretendedCheckOutDate" type="date" />
+                        </div>
+
+                        <span asp-validation-for="PretendedCheckOutDate" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Guest Information</h3>
+
+                    <div class="dependents-header">
+                        <h4>Dependents / guests</h4>
+                        <p>Maximum additional guests: @maxDependents</p>
+                        <p>Remaining guest slots: <span id="remaining-guests">@maxDependents</span></p>
+                    </div>
+
+                    <div id="dependents-container" data-max-dependents="@maxDependents"></div>
+
+                    <button type="button" id="add-dependent" class="btn btn-primary">
+                        <i class="fa-solid fa-user-plus"></i> Add dependent
+                    </button>
+                </div>
+
+                <button class="btn-reserve"><i class="fa-solid fa-check"></i> Confirm Reservation</button>
+            </form>
+        </div>
+    </section>
+</main>
 
 @section Scripts {
     @{

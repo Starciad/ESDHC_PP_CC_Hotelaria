@@ -1,3 +1,9 @@
+.double-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
 .input-group {
     margin-bottom: 22px;
 }
@@ -12,7 +18,7 @@
     display: flex;
     align-items: center;
     border: 1px solid #E5E5E5;
-    border-radius: 14px;
+    border-radius: 12px;
     padding: 15px;
     background: #FAFAFA;
     transition: 0.3s;
@@ -46,46 +52,6 @@
 .login-box p {
     color: var(--text-light);
     margin-bottom: 35px;
-}
-
-.input-group {
-    margin-bottom: 22px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-}
-
-.input-box {
-    display: flex;
-    align-items: center;
-    border: 1px solid #E5E5E5;
-    border-radius: 12px;
-    padding: 15px;
-    background: #FAFAFA;
-    transition: 0.3s;
-}
-
-.input-box:focus-within {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(132, 114, 78, 0.15);
-    background: white;
-}
-
-.input-box i {
-    color: var(--primary-color);
-    margin-right: 12px;
-}
-
-.input-box input {
-    border: none;
-    outline: none;
-    width: 100%;
-    background: transparent;
-    font-size: 15px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .login-options {

@@ -23,6 +23,14 @@
     border-radius: 25px;
 }
 
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 16px 35px;
+    font-size: 16px;
+    border-radius: 25px;
+}
+
 .btn-tour {
     display: flex;
     align-items: center;
@@ -111,6 +119,18 @@
     transition: 0.3s;
 }
 
+.btn-reserve {
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    padding: 18px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 .back-button i {
     color: var(--primary-color);
 }
@@ -168,6 +188,11 @@
 }
 
 .btn-filter:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.btn-reserve:hover {
     opacity: 0.9;
     transform: translateY(-2px);
 }
