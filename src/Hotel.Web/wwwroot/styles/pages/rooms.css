@@ -46,19 +46,6 @@ nav {
             font-weight: 600;
         }
 
-.btn-login {
-    background: var(--primary-color);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 10px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-    .btn-login:hover {
-        opacity: 0.9;
-    }
-
 /* PAGE HEADER */
 
 .page-header {
@@ -99,6 +86,12 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 35px;
+}
+
+/* SEARCH */
+
+.rooms-search {
+    margin-bottom: 32px;
 }
 
 /* ROOM CARD */
@@ -173,20 +166,6 @@ nav {
         font-size: 14px;
         color: var(--text-light);
         font-weight: 400;
-    }
-
-.btn-book {
-    background: var(--primary-color);
-    color: white;
-    padding: 12px 22px;
-    border-radius: 12px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-    .btn-book:hover {
-        opacity: 0.9;
-        transform: translateY(-2px);
     }
 
 /* RESPONSIVE */

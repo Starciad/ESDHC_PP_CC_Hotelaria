@@ -20,13 +20,45 @@
 
     <!-- ROOMS -->
     <section class="rooms-section">
-        <div>
+        <div class="rooms-search">
             <form method="get" class="filters-form">
-                <input asp-for="Filter.Search" placeholder="Search rooms" />
-                <input asp-for="Filter.MinPrice" type="number" placeholder="Min price" />
-                <input asp-for="Filter.MaxPrice" type="number" placeholder="Max price" />
-                <input asp-for="Filter.Capacity" type="number" placeholder="Guests" />
-                <button type="submit">Filter</button>
+                <div class="input-group">
+                    <label asp-for="Filter.Search"></label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input asp-for="Filter.Search" type="text" placeholder="Search rooms" />
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label asp-for="Filter.MinPrice"></label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                        <input asp-for="Filter.MinPrice" type="number" placeholder="Min price" />
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label asp-for="Filter.MaxPrice"></label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                        <input asp-for="Filter.MaxPrice" type="number" placeholder="Max price" />
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label asp-for="Filter.Capacity"></label>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-users"></i>
+                        <input asp-for="Filter.Capacity" type="number" placeholder="Guests" />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-filter">Filter</button>
             </form>
         </div>
 
