@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Hotel.Web.Data
 {
+    // DatabaseInitializer é uma classe responsável por inicializar o banco de dados com dados de exemplo.
+    // Ela recebe uma instância do AppDatabaseContext e tem um método SeedAsync que garante
+    // que o banco de dados seja criado e populado com uma lista de quartos (Room) se a tabela
+    // estiver vazia. Isso é útil para fornecer dados iniciais para a aplicação, facilitando o desenvolvimento
+    // e testes sem a necessidade de inserir manualmente os dados no banco.
     public sealed class DatabaseInitializer(AppDatabaseContext context)
     {
         public async Task SeedAsync()
