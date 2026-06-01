@@ -1,8 +1,8 @@
-# Trabalho de Paradigmas de Programação - Sistema de Gerenciamento de Reservas para Hotel
+# Sistema de Reservas para Hotel
 
 ## Sumário
 
-- [Trabalho de Paradigmas de Programação - Sistema de Gerenciamento de Reservas para Hotel](#trabalho-de-paradigmas-de-programação---sistema-de-gerenciamento-de-reservas-para-hotel)
+- [Sistema de Reservas para Hotel](#sistema-de-reservas-para-hotel)
   - [Sumário](#sumário)
   - [Visão Geral](#visão-geral)
   - [Introdução](#introdução)
