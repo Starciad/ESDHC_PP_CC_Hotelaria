@@ -1,5 +1,8 @@
 ﻿namespace Hotel.Web.ViewModels
 {
+    // Responsável por representar os dados de filtro de quartos
+    // que serão enviados pela view de listagem de quartos.
+
     public sealed class RoomFilterViewModel
     {
         public string? Search { get; set; }

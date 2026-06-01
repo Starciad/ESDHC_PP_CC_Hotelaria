@@ -12,14 +12,19 @@ using System.Threading.Tasks;
 
 namespace Hotel.Web.Controllers
 {
-    public class ReservationsController(
+    // Este controlador é responsável por gerenciar as ações relacionadas
+    // às reservas de quartos. Ele possui ações para criar uma nova reserva
+    // e exibir uma página de sucesso após a criação da reserva. O controlador
+    // utiliza o AppDatabaseContext para acessar os dados do banco de dados e o
+    // UserManager para obter informações sobre o usuário autenticado. Ele
+    // também realiza validações para garantir que as datas de check-in e
+    // check-out sejam válidas, que a capacidade do quarto seja respeitada
+    // e que não haja conflitos com outras reservas existentes.
+    public sealed class ReservationsController(
         AppDatabaseContext context,
         UserManager<ApplicationUser> userManager
     ) : Controller
     {
-        private readonly AppDatabaseContext _context = context;
-        private readonly UserManager<ApplicationUser> _userManager = userManager;
-
         [HttpGet]
         public async Task<IActionResult> Create(int roomId)
         {
@@ -31,7 +36,7 @@ namespace Hotel.Web.Controllers
                     new { returnUrl = Url.Action(nameof(Create), new { roomId }) });
             }
 
-            Room? room = await _context.Rooms
+            Room? room = await context.Rooms
                 .AsNoTracking()
                 .FirstOrDefaultAsync(r => r.Id == roomId);
 
@@ -40,7 +45,7 @@ namespace Hotel.Web.Controllers
                 return NotFound();
             }
 
-            ApplicationUser? appUser = await _userManager.GetUserAsync(User);
+            ApplicationUser? appUser = await userManager.GetUserAsync(User);
 
             if (appUser is null)
             {
@@ -74,7 +79,7 @@ namespace Hotel.Web.Controllers
                     new { returnUrl = Url.Action(nameof(Create), new { roomId = model.RoomId }) });
             }
 
-            Room? room = await _context.Rooms
+            Room? room = await context.Rooms
                 .AsNoTracking()
                 .FirstOrDefaultAsync(r => r.Id == model.RoomId);
 
@@ -108,7 +113,7 @@ namespace Hotel.Web.Controllers
                     "A quantidade total de hóspedes excede a capacidade do quarto.");
             }
 
-            bool conflict = await _context.Reserves.AnyAsync(r =>
+            bool conflict = await context.Reserves.AnyAsync(r =>
                 r.RoomId == model.RoomId &&
                 r.PretendedCheckInDate < model.PretendedCheckOutDate &&
                 model.PretendedCheckInDate < r.PretendedCheckOutDate);
@@ -124,14 +129,14 @@ namespace Hotel.Web.Controllers
                 return View(model);
             }
 
-            ApplicationUser? appUser = await _userManager.GetUserAsync(User);
+            ApplicationUser? appUser = await userManager.GetUserAsync(User);
 
             if (appUser is null)
             {
                 return Challenge();
             }
 
-            Guest? guest = await _context.Guests.FirstOrDefaultAsync(g => g.ApplicationUserId == appUser.Id);
+            Guest? guest = await context.Guests.FirstOrDefaultAsync(g => g.ApplicationUserId == appUser.Id);
 
             if (guest is null)
             {
@@ -143,11 +148,11 @@ namespace Hotel.Web.Controllers
                     Phone = appUser.PhoneNumber
                 };
 
-                _ = _context.Guests.Add(guest);
-                _ = await _context.SaveChangesAsync();
+                _ = context.Guests.Add(guest);
+                _ = await context.SaveChangesAsync();
             }
 
-            await using IDbContextTransaction transaction = await _context.Database.BeginTransactionAsync();
+            await using IDbContextTransaction transaction = await context.Database.BeginTransactionAsync();
 
             Reserve reserve = new()
             {
@@ -157,12 +162,12 @@ namespace Hotel.Web.Controllers
                 PretendedCheckOutDate = model.PretendedCheckOutDate.Date
             };
 
-            _ = _context.Reserves.Add(reserve);
-            _ = await _context.SaveChangesAsync();
+            _ = context.Reserves.Add(reserve);
+            _ = await context.SaveChangesAsync();
 
             foreach (ReservationDependentInputViewModel dependent in model.Dependents)
             {
-                _ = _context.ReserveDependents.Add(new()
+                _ = context.ReserveDependents.Add(new()
                 {
                     ReserveId = reserve.Id,
                     Name = dependent.Name,
@@ -170,7 +175,7 @@ namespace Hotel.Web.Controllers
                 });
             }
 
-            _ = await _context.SaveChangesAsync();
+            _ = await context.SaveChangesAsync();
             await transaction.CommitAsync();
 
             return RedirectToAction(nameof(Success), new { id = reserve.Id });
@@ -179,7 +184,7 @@ namespace Hotel.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Success(int id)
         {
-            Reserve? reserve = await _context.Reserves
+            Reserve? reserve = await context.Reserves
                 .Include(r => r.Room)
                 .Include(r => r.Guest)
                 .Include(r => r.Dependents)

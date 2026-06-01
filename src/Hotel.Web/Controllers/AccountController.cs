@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 
 namespace Hotel.Web.Controllers
 {
+    // Este controlador é responsável por gerenciar as ações
+    // relacionadas à conta do usuário, como registro, login
+    // e logout. Ele utiliza o UserManager e SignInManager do
+    // ASP.NET Core Identity para lidar com a criação de
+    // usuários e autenticação.
     public sealed class AccountController(
         UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager) : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager = userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager = signInManager;
-
         [HttpGet]
         public IActionResult Register(string? returnUrl = null)
         {
@@ -39,11 +41,11 @@ namespace Hotel.Web.Controllers
                 Email = model.Email
             };
 
-            IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+            IdentityResult result = await userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
             {
-                await _signInManager.SignInAsync(user, false);
+                await signInManager.SignInAsync(user, false);
                 return LocalRedirect(returnUrl ?? Url.Action("Index", "Home")!);
             }
 
@@ -69,7 +71,7 @@ namespace Hotel.Web.Controllers
                 return View(model);
             }
 
-            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(
+            Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(
                 model.Email,
                 model.Password,
                 model.RememberMe,
@@ -81,7 +83,7 @@ namespace Hotel.Web.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            ModelState.AddModelError("", "Login inválido.");
+            ModelState.AddModelError("", "Cadastro inválido.");
 
             return View(model);
         }
@@ -89,7 +91,7 @@ namespace Hotel.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
-            await _signInManager.SignOutAsync();
+            await signInManager.SignOutAsync();
             return RedirectToAction("Login");
         }
     }

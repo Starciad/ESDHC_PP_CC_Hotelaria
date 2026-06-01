@@ -7,6 +7,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hotel.Web.Models
 {
+    // Representa a ação de reservar um quarto feita por um hóspede. Ela tem
+    // um relacionamento direto com o hóspede e com o quarto, e também pode
+    // ter dependentes (pessoas que vão se hospedar junto com o hóspede
+    // principal).
+
     [PrimaryKey(nameof(Id))]
     public sealed class Reserve
     {

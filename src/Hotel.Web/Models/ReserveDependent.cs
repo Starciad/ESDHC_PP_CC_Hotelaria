@@ -6,6 +6,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Hotel.Web.Models
 {
+    // Representa uma pessoa que vai se hospedar junto com o hóspede principal, mas
+    // que não é o responsável pela reserva. Ela tem um relacionamento direto
+    // com a reserva, e é identificada por um nome e uma data de nascimento.
+
     [PrimaryKey(nameof(Id))]
     public sealed class ReserveDependent
     {

@@ -1,16 +1,19 @@
 using Hotel.Web.Models;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 using System.Diagnostics;
 
 namespace Hotel.Web.Controllers
 {
-    public sealed class HomeController(ILogger<HomeController> logger) : Controller
+    // Este controlador é responsável por gerenciar as ações relacionadas à
+    // página inicial do site. Ele possui uma única ação, Index, que
+    // retorna a view correspondente à página inicial. Esta página pode
+    // conter informações gerais sobre o hotel, como uma breve descrição,
+    // imagens, promoções e links para outras seções do site, como quartos,
+    // contato e sobre.
+    public sealed class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger = logger;
-
         public IActionResult Index()
         {
             return View();

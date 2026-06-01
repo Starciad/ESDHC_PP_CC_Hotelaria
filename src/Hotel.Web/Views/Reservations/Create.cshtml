@@ -1,7 +1,12 @@
 ﻿@model Hotel.Web.ViewModels.ReservationCreateViewModel
 
 @{
-    ViewData["Title"] = "Reservation";
+    // Página dedicada à criação de reservas, oferecendo uma interface elegante e moderna.
+    // Por meio de um formulário intuitivo, os usuários podem selecionar as datas de check-in
+    // e check-out, além de adicionar dependentes ou convidados adicionais, respeitando a
+    // capacidade do quarto escolhido.
+    
+    ViewData["Title"] = "Reserve um Quarto";
     ViewData["HasHeader"] = true;
 
     int maxDependents = Math.Max(0, Model.RoomCapacity - 1);

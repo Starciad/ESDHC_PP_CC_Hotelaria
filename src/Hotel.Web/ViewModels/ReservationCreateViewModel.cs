@@ -4,10 +4,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hotel.Web.ViewModels
 {
+    // Responsável por representar os dados de criação de
+    // reserva que serão enviados pela view de criação de
+    // reserva.
+
     public sealed class ReservationCreateViewModel
     {
         public int RoomId { get; set; }
-
         public string RoomTitle { get; set; } = string.Empty;
         public string RoomDescription { get; set; } = string.Empty;
         public string RoomImageUrl { get; set; } = string.Empty;

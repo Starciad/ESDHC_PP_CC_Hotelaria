@@ -4,6 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hotel.Web.Models
 {
+    // O hóspede é a entidade principal do sistema, pois é ele quem
+    // realiza as reservas e tem um relacionamento direto com o
+    // usuário do sistema (ApplicationUser).
+
     [PrimaryKey(nameof(Id))]
     public sealed class Guest
     {

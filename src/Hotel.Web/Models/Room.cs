@@ -4,6 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hotel.Web.Models
 {
+    // O quarto é a entidade que representa um quarto disponível
+    // para reserva no hotel. Ele tem um relacionamento direto com
+    // as reservas, e é identificado por um título, uma descrição,
+    // um preço, uma capacidade e outras características (como se
+    // tem wifi, varanda ou piscina).
+
     [PrimaryKey(nameof(Id))]
     public sealed class Room
     {
