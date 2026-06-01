@@ -53,8 +53,9 @@ function removeDependent(card) {
 }
 
 function attachRemoveHandler(card) {
+    console.log(card);
     const removeButton = card.querySelector(".btn-remove-dependent");
-
+    
     if (!removeButton) {
         return;
     }
@@ -78,6 +79,8 @@ function createDependent() {
     nextIndex++;
     refreshAddButtonState();
     updateRemainingGuests();
+
+    console.log("Dependente Criado!");
 }
 
 function initializeExistingDependents() {

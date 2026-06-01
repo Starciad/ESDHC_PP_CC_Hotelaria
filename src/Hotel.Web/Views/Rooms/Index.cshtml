@@ -12,10 +12,10 @@
 <main class="rooms-container">
     <!-- PAGE HEADER -->
     <section class="page-header">
-        <span class="subtitle">Paradise View</span>
+        <span class="subtitle">Vista do Paraíso</span>
 
-        <h1>Hotel for every moment rich in emotion</h1>
-        <p>Every moment feels like the first time in Paradise View.</p>
+        <h1>Um hotel para cada momento rico da vida</h1>
+        <p>Todo momento parece como se fosse a primeira vez no paraíso.</p>
     </section>
 
     <!-- ROOMS -->
@@ -27,7 +27,7 @@
 
                     <div class="input-box">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input asp-for="Filter.Search" type="text" placeholder="Search rooms" />
+                        <input asp-for="Filter.Search" type="text" placeholder="Procurar quartos" />
                     </div>
                 </div>
                 
@@ -72,32 +72,32 @@
                         <p>@room.Description</p>
 
                         <div class="amenities">
-                            <span class="amenity-tag">@room.Capacity Adults</span>
+                            <span class="amenity-tag">@room.Capacity Adultos</span>
 
                             @if (room.HasWifi)
                             {
-                                <span class="amenity-tag">Free Wi-Fi</span>
+                                <span class="amenity-tag">Wi-Fi Gratis</span>
                             }
 
                             @if (room.HasBalcony)
                             {
-                                <span class="amenity-tag">Balcony</span>
+                                <span class="amenity-tag">Balcão</span>
                             }
 
                             @if (room.HasPool)
                             {
-                                <span class="amenity-tag">Pool</span>
+                                <span class="amenity-tag">Piscina</span>
                             }
 
                         </div>
 
                         <div class="card-footer">
-                            <div class="price">$ @room.Price.ToString("F2")<span>/ night</span></div>
+                            <div class="price">$ @room.Price.ToString("F2")<span>/ noite</span></div>
                             <a asp-controller="Reservations"
                                asp-action="Create"
                                asp-route-roomId="@room.Id"
                                class="btn-book">
-                                Book Now
+                                Reserve Agora
                             </a>
                         </div>
                     </div>

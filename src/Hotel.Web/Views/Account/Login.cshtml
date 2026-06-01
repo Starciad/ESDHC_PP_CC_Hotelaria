@@ -13,16 +13,14 @@
     <!-- LEFT -->
     <section class="login-left">
         <div class="login-text">
-            <h1>Luxury Stay Experience</h1>
-            <p>Enjoy unforgettable moments with Paradise View Hotel.</p>
+            <h1>Experiência de Estadia Luxuosa</h1>
+            <p>Aproveite momentos inesquecíveis com o nosso hotel.</p>
         </div>
     </section>
 
     <!-- RIGHT -->
     <section class="login-right">
-        <a asp-controller="Home" asp-action="Index" class="back-button">
-            <i class="fa-solid fa-arrow-left"></i> Back
-        </a>
+        <a asp-controller="Home" asp-action="Index" class="back-button"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
 
         <div class="login-box">
             <div class="login-logo">
@@ -31,11 +29,11 @@
             </div>
 
             <span class="login-subtitle">
-                Paradise View
+                Vista do Paraíso
             </span>
 
-            <h2>Welcome Back</h2>
-            <p>Login to continue your experience.</p>
+            <h2>Bem-vindo(a) de Volta!</h2>
+            <p>Faça o cadastro para continuar com sua experiência.</p>
 
             <form asp-controller="Account" asp-action="Login" method="post">
                 @Html.AntiForgeryToken()
@@ -69,10 +67,10 @@
                     <a href="#">Esqueceu a senha?</a>
                 </div>
 
-                <button type="submit" class="btn-login">Login</button>
+                <button type="submit" class="btn-login">Cadastro</button>
             </form>
 
-            <div class="register-text">Não possui conta? <a asp-controller="Account" asp-action="Register">Criar conta</a></div>
+            <div class="register-text">Não possui conta? <a asp-controller="Account" asp-action="Register">Criar Conta</a></div>
         </div>
     </section>
 </main>
