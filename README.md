@@ -60,5 +60,5 @@ Esse projeto foi desenvolvido por um grupo de estudantes como parte do curso de 
 - [Gabriel Souza](https://github.com/medeirosszg)
 - [João Rezende](https://github.com/joaorezende73)
 - [Julia Pereira](https://github.com/juuliahelena)
-- [Marcos Bacelar](https://github.com/)
+- [Marcos Bacelar](https://github.com/marcossvab)
 - [Maria Santiago](https://github.com/Maria-Rsantiago)
